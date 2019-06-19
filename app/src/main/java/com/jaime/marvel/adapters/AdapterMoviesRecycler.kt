@@ -17,7 +17,7 @@ import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.item_movie.view.*
 
 
-class AdapterMoviesRecycler(val movies:ArrayList<Movie>) : RecyclerView.Adapter<AdapterMoviesRecycler.ViewHolder>(){
+class AdapterMoviesRecycler(var movies:ArrayList<Movie>) : RecyclerView.Adapter<AdapterMoviesRecycler.ViewHolder>(){
 
     override fun onCreateViewHolder(p0: ViewGroup, p1: Int): ViewHolder {
         val view = LayoutInflater.from(p0.context).inflate(R.layout.item_movie,p0,false)
@@ -41,11 +41,13 @@ class AdapterMoviesRecycler(val movies:ArrayList<Movie>) : RecyclerView.Adapter<
         val imagePoster : ImageView = itemView.poster
         val txtRating : TextView = itemView.rating
         val context = itemView.context
+        val txtDate = itemView.release_date
         public fun setView(movie: Movie):Unit {
             Picasso.get()
                 .load(Utils.baseUrlImages+movie.poster_path)
                 .error(R.drawable.ic_broken_image)
                 .into(imagePoster)
+            txtDate.text = movie.release_date
             txtRating.text = movie.vote_average.toString()
             imagePoster.setOnClickListener(View.OnClickListener {
                 val intentGoToMovie = Intent(context,MovieActivity::class.java)
@@ -54,4 +56,9 @@ class AdapterMoviesRecycler(val movies:ArrayList<Movie>) : RecyclerView.Adapter<
             })
         }
     }
-}
+
+        public fun filterList(filterMovies : ArrayList<Movie> ) : Unit {
+            this.movies = filterMovies
+            notifyDataSetChanged()
+        }
+    }

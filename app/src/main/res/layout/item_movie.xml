@@ -23,16 +23,33 @@
                                                           app:cardElevation="8dp"
                                                           app:cardCornerRadius="0dp"
             >
-                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:gravity="right|center_vertical" android:layout_marginHorizontal="4dp">
-
-                    <ImageView android:layout_width="32dp" android:layout_height="32dp" android:src="@drawable/ic_star"/>
-                    <TextView android:id="@+id/rating"
-                              android:layout_width="wrap_content"
-                              android:layout_height="wrap_content"
-                              android:textStyle="bold"
-                              android:textSize="24dp"
+                <RelativeLayout android:layout_width="match_parent"
+                                android:layout_height="match_parent">
+                    <TextView
+                            android:id="@+id/release_date"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:layout_marginLeft="8dp"
                     />
-                </LinearLayout>
+                    <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:layout_alignParentRight="true"
+                            android:layout_centerVertical="true"
+                            android:gravity="right|center_vertical"
+                            android:layout_marginHorizontal="4dp">
+
+                        <ImageView android:layout_width="32dp" android:layout_height="32dp" android:src="@drawable/ic_star"/>
+                        <TextView android:id="@+id/rating"
+                                  android:layout_width="wrap_content"
+                                  android:layout_height="wrap_content"
+                                  android:textStyle="bold"
+                                  android:textSize="24dp"
+                        />
+                    </LinearLayout>
+                </RelativeLayout>
             </android.support.design.card.MaterialCardView>
         </RelativeLayout>
         

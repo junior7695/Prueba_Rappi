@@ -91,4 +91,5 @@
     </string>
     <string name="action_settings">Settings</string>
     <string name="title_activity_movie">MovieActivity</string>
+    <string name="hint_search">Escribe Aqui</string>
 </resources>
