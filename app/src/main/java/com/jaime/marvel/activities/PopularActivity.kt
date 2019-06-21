@@ -2,14 +2,13 @@ package com.jaime.marvel.activities
 
 import android.content.Intent
 import android.os.Bundle
-import android.os.Handler
 import android.support.design.widget.Snackbar
 import android.support.v4.widget.SwipeRefreshLayout
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.GridLayoutManager
-import android.support.v7.widget.RecyclerView
 import android.text.Editable
 import android.text.TextWatcher
+import android.view.MenuItem
 import android.view.View
 import android.widget.Toast
 import com.google.gson.Gson
@@ -19,23 +18,21 @@ import com.jaime.marvel.controllers.APIController
 import com.jaime.marvel.models.Movie
 import com.jaime.marvel.services.ServiceVolley
 import com.jaime.marvel.utils.Utils
-import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.android.synthetic.main.content_main.*
+import kotlinx.android.synthetic.main.content_popular.*
+import kotlinx.android.synthetic.main.activity_popular.*
 import org.json.JSONArray
 
+class PopularActivity : AppCompatActivity() {
 
-
-class MainActivity : AppCompatActivity() {
-
-    var doubleBackToExitPressedOnce : Boolean = false;
     val serviceVolley = ServiceVolley()
     val apiController = APIController(serviceVolley)
     var movies:ArrayList<Movie> = ArrayList()
     var isShowPanelCategory : Boolean = false
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        setContentView(R.layout.activity_popular)
         setSupportActionBar(toolbar)
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
         fab.setOnClickListener { view ->
             if (isShowPanelCategory) {
                 panel_categorias.visibility = View.GONE
@@ -68,12 +65,12 @@ class MainActivity : AppCompatActivity() {
             recycler_movies.visibility = View.VISIBLE
             val serviceVolley = ServiceVolley()
             val apiController = APIController(serviceVolley)
-            apiController.get(Utils.getEndpointList()){response ->
+            apiController.get(Utils.getEndPointGetPopular()){ response ->
                 if (response != null){
                     (recycler_movies.adapter as AdapterMoviesRecycler).clear()
                     movies.clear()
                     val gson = Gson()
-                    val results:JSONArray = response.get("results") as JSONArray
+                    val results: JSONArray = response.get("results") as JSONArray
                     (0..(results.length()-1)).forEach {i->
                         movies.add(gson.fromJson(results.getJSONObject(i).toString(),Movie::class.java))
                     }
@@ -91,23 +88,24 @@ class MainActivity : AppCompatActivity() {
             }
         })
 
-        btn_popular.setOnClickListener(View.OnClickListener {
-            val intentGoToPopularActivity = Intent(this, PopularActivity::class.java)
-            startActivity(intentGoToPopularActivity)
+        btn_principal.setOnClickListener(View.OnClickListener {
+            finish()
         })
         btn_top_rated.setOnClickListener(View.OnClickListener {
             val intentGoToTopRatedActivity = Intent(this, TopRatedActivity::class.java)
             startActivity(intentGoToTopRatedActivity)
+            finish()
         })
         btn_upcoming.setOnClickListener(View.OnClickListener {
             val intetGoToUpcomingActivity = Intent(this, UpcomingActivity::class.java)
             startActivity(intetGoToUpcomingActivity)
+            finish()
         })
     }
 
     public fun getReloadApi():Unit {
         recycler_movies.visibility = View.VISIBLE
-        apiController.get(Utils.getEndpointList()){response ->
+        apiController.get(Utils.getEndPointGetPopular()){response ->
             if (response != null){
                 val gson = Gson()
                 val results:JSONArray = response.get("results") as JSONArray
@@ -125,17 +123,11 @@ class MainActivity : AppCompatActivity() {
             }
         }
     }
-
-    override fun onBackPressed() {
-        if (doubleBackToExitPressedOnce) {
-            super.onBackPressed()
-            return
+    override fun onOptionsItemSelected(menuItem: MenuItem): Boolean {
+        if (menuItem.itemId == android.R.id.home) {
+            finish()
         }
-
-        this.doubleBackToExitPressedOnce = true;
-        Toast.makeText(this,"Presionar de nuevo para salir de Ukucela", Toast.LENGTH_SHORT).show()
-
-        Handler().postDelayed(Runnable { doubleBackToExitPressedOnce = false }, 2000)
+        return super.onOptionsItemSelected(menuItem)
     }
 
     private fun filter(text: String) {
@@ -154,6 +146,4 @@ class MainActivity : AppCompatActivity() {
         // Llamar al metodo filtro de la lista
         (recycler_movies.adapter as AdapterMoviesRecycler).filterList(filterdMovies)
     }
-
-
 }

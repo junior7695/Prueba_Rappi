@@ -14,8 +14,24 @@
             android:supportsRtl="true"
             android:theme="@style/AppTheme">
         <activity
+                android:name=".activities.UpcomingActivity"
+                android:label="@string/title_activity_upcoming"
+                android:theme="@style/AppTheme.NoActionBar">
+        </activity>
+        <activity
+                android:name=".activities.TopRatedActivity"
+                android:label="@string/title_activity_top_rated"
+                android:theme="@style/AppTheme.NoActionBar">
+        </activity>
+        <activity
+                android:name=".activities.PopularActivity"
+                android:label="@string/title_activity_popular"
+                android:theme="@style/AppTheme.NoActionBar">
+        </activity>
+        <activity
                 android:name=".activities.MovieActivity"
                 android:label="@string/title_activity_movie"
+                android:screenOrientation="portrait"
                 android:theme="@style/AppTheme.NoActionBar">
         </activity>
         <activity

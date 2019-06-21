@@ -6,7 +6,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:fitsSystemWindows="true"
-        tools:context=".activities.MainActivity">
+        tools:context=".activities.UpcomingActivity">
 
     <android.support.design.widget.AppBarLayout
             android:id="@+id/app_bar"
@@ -61,6 +61,7 @@
                             android:textColor="@color/black"
                             android:maxLines="1"
                             android:singleLine="true"
+
                     />
                 </LinearLayout>
 
@@ -69,7 +70,7 @@
         </android.support.design.widget.CollapsingToolbarLayout>
     </android.support.design.widget.AppBarLayout>
 
-    <include layout="@layout/content_main"/>
+    <include layout="@layout/content_upcoming"/>
 
     <android.support.design.widget.FloatingActionButton
             android:id="@+id/fab"

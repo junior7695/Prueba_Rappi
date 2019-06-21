@@ -7,8 +7,8 @@
         tools:showIn="@layout/activity_main"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".activities.MainActivity"
-android:id="@+id/swipeRefreshLayout">
+        tools:context=".activities.PopularActivity"
+        android:id="@+id/swipeRefreshLayout">
 
 
     <LinearLayout android:layout_width="match_parent"
@@ -31,7 +31,7 @@ android:id="@+id/swipeRefreshLayout">
                     android:textSize="26dp"
                     android:layout_marginTop="16dp"/>
             <android.support.design.button.MaterialButton
-                    android:id="@+id/btn_popular"
+                    android:id="@+id/btn_principal"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
@@ -40,7 +40,7 @@ android:id="@+id/swipeRefreshLayout">
                     android:elevation="8dp"
                     android:gravity="center"
                     android:paddingHorizontal="20dp"
-                    android:text="Popular"
+                    android:text="Principal"
                     android:textAppearance="@style/Widget.MaterialComponents.Button.TextButton"
                     android:textColor="@color/colorPrimary"
                     android:textSize="25sp"
@@ -76,22 +76,22 @@ android:id="@+id/swipeRefreshLayout">
                     android:textSize="25sp"
                     app:cornerRadius="50dp" />
         </LinearLayout>
-    <android.support.v7.widget.RecyclerView
-            android:id="@+id/recycler_movies"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:visibility="gone"
-    />
+        <android.support.v7.widget.RecyclerView
+                android:id="@+id/recycler_movies"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:visibility="gone"
+        />
 
-    <ImageView android:id="@+id/refresh_recycler"
-               android:layout_width="52dp"
-               android:layout_height="52dp"
-               android:src="@drawable/ic_refresh"
-               android:layout_gravity="center"
-               android:layout_marginTop="156dp"
-               android:visibility="gone"
+        <ImageView android:id="@+id/refresh_recycler"
+                   android:layout_width="52dp"
+                   android:layout_height="52dp"
+                   android:src="@drawable/ic_refresh"
+                   android:layout_gravity="center"
+                   android:layout_marginTop="156dp"
+                   android:visibility="gone"
 
-    />
+        />
 
     </LinearLayout>
 

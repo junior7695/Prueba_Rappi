@@ -92,4 +92,7 @@
     <string name="action_settings">Settings</string>
     <string name="title_activity_movie">MovieActivity</string>
     <string name="hint_search">Escribe Aqui</string>
+    <string name="title_activity_popular">PopularActivity</string>
+    <string name="title_activity_top_rated">TopRatedActivity</string>
+    <string name="title_activity_upcoming">UpcomingActivity</string>
 </resources>

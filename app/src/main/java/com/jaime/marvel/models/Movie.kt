@@ -11,5 +11,9 @@ data class Movie( val id:Int,
                   val overview:String,
                   val poster_path:String,
                   val backdrop_path:String,
-                  val popularity:Float
+                  val popularity:Float,
+                  val otra_cosa:Int,
+                  var trailers:ArrayList<Trailer>
                 ) : Serializable
+
+

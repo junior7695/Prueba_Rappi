@@ -7,6 +7,7 @@
         tools:showIn="@layout/activity_movie"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:configChanges="screenSize|orientation|keyboardHidden"
         tools:context=".activities.MovieActivity">
 
     <LinearLayout android:layout_width="match_parent" android:layout_height="match_parent" android:orientation="vertical">
@@ -19,8 +20,8 @@
             >
                 <ImageView
                         android:id="@+id/poster"
-                        android:layout_width="wrap_content"
-                        android:layout_height="256dp"
+                        android:layout_width="212dp"
+                        android:layout_height="wrap_content"
                         android:layout_marginVertical="16dp"
                         android:layout_gravity="center_vertical"
                 />
@@ -30,27 +31,92 @@
                         android:orientation="vertical"
                 >
                     <TextView
-                            android:text="Resumen"
+                            android:text="Rating"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:textSize="20dp"
-                            android:layout_gravity="right"
+
                             android:textAlignment="center"
                             android:textStyle="bold"
                             android:textColor="@color/white"
                             android:layout_margin="@dimen/text_margin"
                     />
-                    <TextView
-                            android:id="@+id/overview"
-                            android:layout_width="wrap_content"
-                            android:layout_height="250dp"
-                            android:textSize="@dimen/size_text_overview"
-                            android:layout_gravity="center_vertical|end"
-                            android:textColor="@color/white"
-                            android:layout_margin="@dimen/text_margin"
-                    />
+
+                    <RelativeLayout android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content">
+                        <ProgressBar
+                                android:id="@+id/rating_bar"
+                                android:layout_width="102dp"
+                                android:layout_height="102dp"
+                                android:max="100"
+                                style="?android:progressBarStyleHorizontal"
+                                android:progressDrawable="@drawable/circle"
+                                android:progress="0" />
+                        <TextView
+                                android:id="@+id/rating"
+                                android:layout_width="wrap_content"
+                                  android:layout_height="wrap_content"
+                                  android:text="100%"
+                                  android:textStyle="bold"
+                                  android:textColor="@color/white"
+                                  android:textSize="22dp"
+                                  android:layout_centerInParent="true"
+                        />
+                    </RelativeLayout>
                 </LinearLayout>
             </LinearLayout>
+
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+        >
+            <TextView
+                    android:text="Resumen"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="20dp"
+                    android:layout_gravity="right"
+                    android:textAlignment="center"
+                    android:textStyle="bold"
+                    android:textColor="@color/blue_900"
+                    android:layout_margin="@dimen/text_margin"
+            />
+            <TextView
+                    android:id="@+id/overview"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/size_text_overview"
+                    android:layout_gravity="center_vertical|end"
+                    android:textColor="@color/blue_900"
+                    android:layout_margin="@dimen/text_margin"
+            />
+        </LinearLayout>
+
+        <RelativeLayout
+                android:id="@+id/panel_trailer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="32dp"
+                android:layout_marginHorizontal="16dp"
+                android:layout_marginBottom="32dp"
+        >
+            <fragment
+                    android:id="@+id/trailer_fragment"
+                    android:name="com.google.android.youtube.player.YouTubePlayerFragment"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_weight="8" />
+            <ImageButton
+                    android:id="@+id/play_trailer"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:src="@android:drawable/ic_media_play"
+            />
+        </RelativeLayout>
     </LinearLayout>
 
 </android.support.v4.widget.NestedScrollView>

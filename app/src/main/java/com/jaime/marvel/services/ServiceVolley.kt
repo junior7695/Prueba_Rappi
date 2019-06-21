@@ -5,14 +5,11 @@ import com.android.volley.AuthFailureError
 import com.android.volley.NetworkResponse
 import com.android.volley.Response
 import com.android.volley.VolleyLog
-import com.android.volley.toolbox.HttpHeaderParser
 import com.android.volley.toolbox.JsonObjectRequest
 import com.jaime.marvel.application.BackendVolley
 import com.jaime.marvel.interfaces.ServiceInterface
 import com.jaime.marvel.utils.Utils
 import org.json.JSONObject
-import java.nio.charset.Charset
-import android.R.attr.data
 import com.android.volley.NoConnectionError
 import com.android.volley.VolleyError
 
@@ -54,4 +51,5 @@ class ServiceVolley : ServiceInterface {
 
         BackendVolley.instance?.addToRequestQueue(jsonObjReq, TAG)
     }
+
 }
