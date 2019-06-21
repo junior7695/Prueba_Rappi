@@ -16,16 +16,19 @@
         <activity
                 android:name=".activities.UpcomingActivity"
                 android:label="@string/title_activity_upcoming"
+                android:screenOrientation="portrait"
                 android:theme="@style/AppTheme.NoActionBar">
         </activity>
         <activity
                 android:name=".activities.TopRatedActivity"
                 android:label="@string/title_activity_top_rated"
+                android:screenOrientation="portrait"
                 android:theme="@style/AppTheme.NoActionBar">
         </activity>
         <activity
                 android:name=".activities.PopularActivity"
                 android:label="@string/title_activity_popular"
+                android:screenOrientation="portrait"
                 android:theme="@style/AppTheme.NoActionBar">
         </activity>
         <activity
@@ -37,6 +40,7 @@
         <activity
                 android:name=".activities.MainActivity"
                 android:label="@string/app_name"
+                android:screenOrientation="portrait"
                 android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
